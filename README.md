@@ -2,6 +2,8 @@
 
 学习 xv6 代码
 
+[TOC]
+
 ## xv6 相关的资源
 
 [官网地址](https://pdos.csail.mit.edu/6.828/2017/)

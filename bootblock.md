@@ -92,7 +92,7 @@ start32:
   movw    %ax, %gs                # -> GS
 
   # Set up the stack pointer and call into C.
-  movl    $start, %esp
+  movl    $start, %esp # （设置栈段为 0x7C00 向低地址增长）
   call    bootmain
 
   # If bootmain returns (it shouldn't), trigger a Bochs
@@ -117,3 +117,17 @@ gdtdesc: #
   .long   gdt                             # address gdt
 
 ```
+
+
+## bootmain.c
+
+```c
+// Boot loader.
+//
+// Part of the boot block, along with bootasm.S, which calls bootmain().
+// bootasm.S has put the processor into protected 32-bit mode.
+// bootmain() loads an ELF kernel image from the disk starting at
+// sector 1 and then jumps to the kernel entry routine.
+```
+
+这里的关键是 ELF。
